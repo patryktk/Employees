@@ -1,6 +1,7 @@
 package pl.wypozyczalnia.employes.model;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
@@ -8,22 +9,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Collection;
+import java.util.Collections;
 
 @Entity
 public class Employee implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String password;
     private String role;
 
-    public Employee() {
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
+
+    private boolean isEnabled;
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public String getRole() {
@@ -35,22 +48,23 @@ public class Employee implements UserDetails {
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
     @Override
-    public String getPassword() {
-        return null;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
     @Override
-    public String getUsername() {
-        return null;
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setUsername(String username) {
@@ -58,22 +72,16 @@ public class Employee implements UserDetails {
     }
 
     @Override
-    public boolean isAccountNonExpired() {
-        return false;
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singleton(new SimpleGrantedAuthority(role));
     }
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
+    public String getPassword() {
+        return password;
     }
 
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
 }

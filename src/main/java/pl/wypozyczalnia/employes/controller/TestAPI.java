@@ -1,4 +1,4 @@
-package pl.wypozyczalnia.employes;
+package pl.wypozyczalnia.employes.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -6,28 +6,32 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 
 @RestController
-public class EmployeeApi
+public class TestAPI
 {
     @GetMapping("/forNotAuthorized")
-    public String forAll(Principal principal) {
+    public String forNotAuthorized(Principal principal) {
         if (principal == null) {
             return "Czesc nieznajomy";
         } else return "Czesc " + principal.getName();
     }
+    @GetMapping("/forSignIn")
+    private String forSignIn(Principal principal){
+        return "Witaj, " +principal.getName() + " udało Ci się zalogować";
+    }
 
     @GetMapping("/forMechanic")
     public String forMechanic(Principal principal) {
-        return "Czesc user " + principal.getName();
+        return "Czesc mechanik " + principal.getName();
     }
 
     @GetMapping("/forSalesman")
     public String forSalesman(Principal principal) {
-        return "Czesc admin " + principal.getName();
+        return "Czesc sprzedawca " + principal.getName();
     }
 
     @GetMapping("/forManager")
     public String forManager(Principal principal) {
-        return "Czesc admin " + principal.getName();
+        return "Czesc manager " + principal.getName();
     }
 
     @GetMapping("/papa")

@@ -23,6 +23,23 @@ public class Start {
                 user.setUsername("mechanik");
                 user.setPassword(passwordEncoder.encode("mechanik"));
                 user.setRole("ROLE_MECHANIC");
+                user.setEnabled(true);
+            employeeRepo.save(user);
+        }
+        if (employeeRepo.findAllByUsername("sprzedawca") == null){
+            Employee user = new Employee();
+            user.setUsername("sprzedawca");
+            user.setPassword(passwordEncoder.encode("sprzedawca"));
+            user.setRole("ROLE_SALESMAN");
+            user.setEnabled(true);
+            employeeRepo.save(user);
+        }
+        if (employeeRepo.findAllByUsername("manager") == null){
+            Employee user = new Employee();
+            user.setUsername("manager");
+            user.setPassword(passwordEncoder.encode("manager"));
+            user.setRole("ROLE_MANAGER");
+            user.setEnabled(true);
             employeeRepo.save(user);
         }
     }
