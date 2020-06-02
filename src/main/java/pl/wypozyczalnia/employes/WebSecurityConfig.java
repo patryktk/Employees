@@ -47,6 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/forManager").hasRole("MANAGER")
                 .antMatchers("/forNotAuthorized").permitAll()
                 .antMatchers("/signUp").permitAll()
+                .antMatchers("/role").hasRole("MANAGER")
                 .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/forSignIn").permitAll()
                 .and()

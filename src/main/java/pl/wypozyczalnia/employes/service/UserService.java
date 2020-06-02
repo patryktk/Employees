@@ -56,9 +56,9 @@ public class UserService {
         String url = request.getServerName() + ":" +
                 request.getServerPort() +
                 request.getContextPath() +
-                "/verify-token?token=" + token;
+                "/verify-admin?token=" + token;
 
-        mailSenderService.sendMail("DeadTimePL@gmail.com", "SalesMan request:" + user.getUsername(), url,false);
+        mailSenderService.sendMail("mailsenderspring@gmail.com", "SalesMan request:" + user.getUsername(), url,false);
     }
     public void verifyAdminToken(String token){
         Employee employee = verificationTokenRepo.findByValue(token).getEmployee();
@@ -75,9 +75,9 @@ public class UserService {
         String url = request.getServerName() + ":" +
                 request.getServerPort() +
                 request.getContextPath() +
-                "/verify-token?token=" + token;
+                "/verify-manager?token=" + token;
 
-        mailSenderService.sendMail("DeadTimePL@gmail.com", "Manager request:" + user.getUsername(), url,false);
+        mailSenderService.sendMail("mailsenderspring@gmail.com", "Manager request:" + user.getUsername(), url,false);
     }
     public void verifyManagerToken(String token){
         Employee employee = verificationTokenRepo.findByValue(token).getEmployee();

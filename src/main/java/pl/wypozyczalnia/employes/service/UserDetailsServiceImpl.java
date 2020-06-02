@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import pl.wypozyczalnia.employes.model.Employee;
 import pl.wypozyczalnia.employes.repo.EmployeeRepo;
 
 @Primary
@@ -23,4 +24,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         return employeeRepo.findAllByUsername(s);
     }
+
+
 }

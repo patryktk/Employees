@@ -42,5 +42,6 @@ public class Start {
             user.setEnabled(true);
             employeeRepo.save(user);
         }
+        System.out.println(employeeRepo.findAll());
     }
 }

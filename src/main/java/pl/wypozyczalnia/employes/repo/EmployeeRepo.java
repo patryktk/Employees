@@ -8,4 +8,5 @@ import pl.wypozyczalnia.employes.model.Employee;
 public interface EmployeeRepo extends JpaRepository<Employee, Long> {
 
     Employee findAllByUsername(String username);
+    Employee findAllByRole(String role);
 }

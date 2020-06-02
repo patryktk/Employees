@@ -2,12 +2,20 @@ package pl.wypozyczalnia.employes.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.wypozyczalnia.employes.model.Employee;
+import pl.wypozyczalnia.employes.repo.EmployeeRepo;
 
 import java.security.Principal;
 
 @RestController
 public class TestAPI
 {
+    EmployeeRepo employeeRepo;
+
+    public TestAPI(EmployeeRepo employeeRepo) {
+        this.employeeRepo = employeeRepo;
+    }
+
     @GetMapping("/forNotAuthorized")
     public String forNotAuthorized(Principal principal) {
         if (principal == null) {
@@ -37,6 +45,11 @@ public class TestAPI
     @GetMapping("/papa")
     public String logout() {
         return "papa ";
+    }
+
+    @GetMapping("/role")
+    public Employee role(){
+        return employeeRepo.findAllByRole("ROLE_SALESMAN");
     }
 
 }

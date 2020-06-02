@@ -84,4 +84,14 @@ public class Employee implements UserDetails {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", isEnabled=" + isEnabled +
+                '}';
+    }
 }
