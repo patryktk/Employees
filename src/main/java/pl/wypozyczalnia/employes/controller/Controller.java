@@ -1,18 +1,21 @@
 package pl.wypozyczalnia.employes.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.wypozyczalnia.employes.model.Employee;
 import pl.wypozyczalnia.employes.repo.EmployeeRepo;
 
 import java.security.Principal;
+import java.util.List;
 
+@CrossOrigin
 @RestController
-public class TestAPI
-{
+public class Controller {
+
     EmployeeRepo employeeRepo;
 
-    public TestAPI(EmployeeRepo employeeRepo) {
+    public Controller(EmployeeRepo employeeRepo) {
         this.employeeRepo = employeeRepo;
     }
 
@@ -42,14 +45,18 @@ public class TestAPI
         return "Czesc manager " + principal.getName();
     }
 
-    @GetMapping("/papa")
+    @GetMapping("/logout")
     public String logout() {
         return "papa ";
     }
 
-    @GetMapping("/role")
-    public Employee role(){
+    @GetMapping("/getSalesmans")
+    public Employee getSalesmans(){
         return employeeRepo.findAllByRole("ROLE_SALESMAN");
     }
 
+    @GetMapping("/getUserDetails")
+    public List<Employee> getUserDetails(){
+        return employeeRepo.findAll();
+    }
 }

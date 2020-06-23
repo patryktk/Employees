@@ -1,22 +1,29 @@
 package pl.wypozyczalnia.employes.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.wypozyczalnia.employes.model.Employee;
+import pl.wypozyczalnia.employes.repo.EmployeeRepo;
 import pl.wypozyczalnia.employes.service.UserService;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
+import java.util.List;
 
+@CrossOrigin
 @Controller
 public class MainController {
 
     private UserService userService;
+    EmployeeRepo employeeRepo;
 
-    public MainController(UserService userService) {
+
+    public MainController(UserService userService, EmployeeRepo employeeRepo) {
         this.userService = userService;
+        this.employeeRepo = employeeRepo;
     }
 
     @RequestMapping("/login")
@@ -58,4 +65,7 @@ public class MainController {
         userService.verifyManagerToken(token);
         return new ModelAndView("redirect:/login");
     }
+
+
+
 }
