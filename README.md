@@ -8,7 +8,7 @@ Wylogowanie: https://ptkaczykemployees.herokuapp.com/logout
 
 Rejestracja: https://ptkaczykemployees.herokuapp.com/signUp
 
-getSalesMan:(tylko menago) https://ptkaczykemployees.herokuapp.com/getSalesmans
+getSalesMan: https://ptkaczykemployees.herokuapp.com/getSalesmans
 
 getUserDetails: https://ptkaczykemployees.herokuapp.com/getUserDetails
 
