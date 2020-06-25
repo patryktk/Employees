@@ -21,7 +21,7 @@ public class MailSenderService {
     public MailSenderService() {
     }
 
-    public void sendMail(String to, String subject, String text, boolean isHtmlContent) throws MessagingException{
+    public void sendMail(String to, String subject, String text, boolean isHtmlContent) throws MessagingException {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
         mimeMessageHelper.setTo(to);

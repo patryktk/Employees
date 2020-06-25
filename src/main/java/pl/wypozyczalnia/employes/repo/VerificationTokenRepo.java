@@ -5,6 +5,6 @@ import pl.wypozyczalnia.employes.model.VerificationToken;
 
 public interface VerificationTokenRepo extends JpaRepository<VerificationToken, Long> {
 
-    VerificationToken findByValue (String value);
+    VerificationToken findByValue(String value);
 
 }

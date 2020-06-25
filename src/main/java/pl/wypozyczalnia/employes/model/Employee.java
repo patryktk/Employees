@@ -20,11 +20,6 @@ public class Employee implements UserDetails {
     private String username;
     private String password;
     private String role;
-
-    public void setEnabled(boolean enabled) {
-        isEnabled = enabled;
-    }
-
     private boolean isEnabled;
 
     public Long getId() {
@@ -37,6 +32,10 @@ public class Employee implements UserDetails {
 
     public String getUsername() {
         return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getRole() {
@@ -67,8 +66,8 @@ public class Employee implements UserDetails {
         return true;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
 
     @Override
